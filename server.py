@@ -75,7 +75,9 @@ def send_commands(client_conn): # Send commands
                 results = client_conn.recv(1024)
                 s.settimeout(2)
                 print(results)
-
+            except:
+                continue
+    
     client_conn.close()
     s.close()        
     os.system('cls')
