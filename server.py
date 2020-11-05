@@ -69,14 +69,11 @@ def send_commands(client_conn): # Send commands
             
             break
 
-        else:
-            try:
-                client_conn.send(command)
-                results = client_conn.recv(1024)
-                s.settimeout(2)
-                print(results)
-            except:
-                continue
+        client_conn.send(command.encode())
+        results = client_conn.recv(BUFFER_SIZE).decode()
+                
+        print(results)
+            
     
     client_conn.close()
     s.close()        
