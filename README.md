@@ -9,4 +9,6 @@ In a typical remote system access scenario, the user is the client and the targe
 - pip install -r requirements.txt
 - python server.py
 ## Setup Client
+It's suggested to export the client.py in exe using autopytoexe
+
 - python client.py
