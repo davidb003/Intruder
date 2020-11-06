@@ -1,9 +1,9 @@
 import socket
 import subprocess
 
-SERVER_HOST = "" # Server IP
-SERVER_PORT = 5003
-BUFFER_SIZE = 1024
+SERVER_HOST = ""   # Server IP
+SERVER_PORT = 5003 # Server Port
+BUFFER_SIZE = 1024 # Buffer Size
 
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
