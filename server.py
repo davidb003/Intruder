@@ -63,7 +63,7 @@ def send_commands(client_conn): # Send commands
 
     while True:
     
-        command = input(Fore.RED + " Shell> ")
+        command = input(Fore.RED + " ")
     
 
         if command == "quit":
@@ -113,7 +113,7 @@ def mainmenu():
         os.system('cls')
         banner()
         cprint(" -- WHILE YOU ARE IN SHELL THESE ARE THE COMMANDS --\n", 'red')
-        cprint(" exit - Close connection and go back to main menu\n", 'red')
+        cprint(" quit - Close connection and go back to main menu\n", 'red')
         
         bacon = input(Fore.RED + " Press 1 to go back main menu : ")
         if bacon == '1':
