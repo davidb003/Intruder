@@ -1,5 +1,5 @@
 # Intruder
-![Intruder Banner](https://www.teabagatexitstore.com/Github_banners/INtruder.PNG)
+![Intruder Banner](https://www.teabagatexitstore.com/Github_banners/INTruder.PNG)
 #### Developed by Buccioz
 
 ## Reverse Shell
