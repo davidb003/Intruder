@@ -1,4 +1,4 @@
-import termcolor 
+import termcolor
 import colorama
 
 from termcolor import *

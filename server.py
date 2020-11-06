@@ -95,9 +95,9 @@ def mainmenu():
 
     os.system('cls')
     banner()
-    cprint("[1] SNUCK INTO\n", 'magenta')  
-    cprint("[2] HELP\n", 'magenta')
-    cprint("[3] QUIT\n", 'magenta')
+    cprint("[1] SNUCK INTO\n", 'red')  
+    cprint("[2] HELP\n", 'red')
+    cprint("[3] QUIT\n", 'red')
 
     opt = input(': ')
 
@@ -109,7 +109,7 @@ def mainmenu():
     elif opt == '2':
         os.system('cls')
         banner()
-        cprint(" -- WHILE YOU ARE IN SHELL THESE ARE THE COMMANDS --\n", 'magenta')
+        cprint(" -- WHILE YOU ARE IN SHELL THESE ARE THE COMMANDS --\n", 'red')
         print(" exit - Close connection and go back to main menu\n")
         
         bacon = input(' Press 1 to go back main menu : ')
