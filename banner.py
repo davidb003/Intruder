@@ -18,4 +18,4 @@ def banner():
     :::::::::::::::::::::Backdoor Manager Tool:::::::::::::::::::::                                                
     ::::::::::::::::::::::Developed by Buccioz:::::::::::::::::::::                                         
                                                   
-                                                    """ , 'magenta')
+                                                    """ , 'red')
